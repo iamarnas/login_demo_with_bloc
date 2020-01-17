@@ -4,15 +4,9 @@ import 'package:flutter/material.dart';
 import '../blocs/blocs.dart';
 import '../screens/screens.dart';
 
-class LoginScreen extends StatefulWidget {
+class LoginScreen extends StatelessWidget {
   static const String routeName = '/login';
 
-  @override
-  _LoginScreenState createState() => _LoginScreenState();
-}
-
-class _LoginScreenState extends State<LoginScreen> {
-  bool isObscure = true;
   @override
   Widget build(BuildContext context) {
     final bloc = BlocProvider.of<LoginBloc>(context);
@@ -53,34 +47,39 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Widget buildPasswordField(LoginBloc bloc) {
+    bool isObscure = true;
     return StreamBuilder(
       stream: bloc.password,
       builder: (context, snapshot) {
-        return TextField(
-          onChanged: bloc.updatePassword,
-          obscureText: isObscure,
-          decoration: InputDecoration(
-            suffixIcon: IconButton(
-              icon: isObscure
-                  ? Icon(
-                      Icons.visibility_off,
-                      color: Colors.grey,
-                    )
-                  : Icon(
-                      Icons.visibility,
-                      color: Theme.of(context).primaryColor,
-                    ),
-              onPressed: () {
-                setState(() => isObscure = !isObscure);
-              },
-            ),
-            hintText: 'password',
-            labelText: 'Password',
-            errorText: snapshot.error,
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(8),
-            ),
-          ),
+        return StatefulBuilder(
+          builder: (BuildContext context, StateSetter setState) {
+            return TextField(
+              onChanged: bloc.updatePassword,
+              obscureText: isObscure,
+              decoration: InputDecoration(
+                suffixIcon: IconButton(
+                  icon: isObscure
+                      ? Icon(
+                          Icons.visibility_off,
+                          color: Colors.grey,
+                        )
+                      : Icon(
+                          Icons.visibility,
+                          color: Theme.of(context).primaryColor,
+                        ),
+                  onPressed: () {
+                    setState(() => isObscure = !isObscure);
+                  },
+                ),
+                hintText: 'password',
+                labelText: 'Password',
+                errorText: snapshot.error,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+              ),
+            );
+          },
         );
       },
     );

@@ -2,6 +2,9 @@
 
 A new Flutter application.
 
+This Flutter example show how to handle CombineLatest with ReactiveX /
+rxdart.
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
