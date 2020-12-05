@@ -5,10 +5,6 @@ import './src/screens/screens.dart';
 
 class App extends StatelessWidget {
   // This widget is the root of your application.
-  final routes = <String, WidgetBuilder>{
-    LoginScreen.routeName: (context) => LoginScreen(),
-    HomeScreen.routeName: (context) => HomeScreen(title: 'Home'),
-  };
   @override
   Widget build(BuildContext context) {
     return BlocProvider<LoginBloc>(
@@ -17,11 +13,15 @@ class App extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Login Demo',
         theme: ThemeData(
-          primaryColor: Colors.blue,
-          buttonTheme: ButtonThemeData(height: 56),
+          brightness: Brightness.light,
+          primarySwatch: Colors.blue,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         home: LoginScreen(), // becomes the route named '/'
-        routes: routes,
+        routes: <String, WidgetBuilder>{
+          LoginScreen.routeName: (context) => LoginScreen(),
+          HomeScreen.routeName: (context) => const HomeScreen(title: 'Home'),
+        },
       ),
     );
   }

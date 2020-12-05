@@ -16,12 +16,12 @@ class LoginScreen extends StatelessWidget {
   Widget body(LoginBloc bloc) {
     return Scaffold(
       body: ListView(
-        padding: EdgeInsets.fromLTRB(48, 140, 48, 16),
+        padding: const EdgeInsets.fromLTRB(48, 140, 48, 16),
         children: <Widget>[
           buildEmailField(bloc),
-          SizedBox(height: 12),
+          const SizedBox(height: 12),
           buildPasswordField(bloc),
-          SizedBox(height: 12),
+          const SizedBox(height: 12),
           buildSubmitButton(bloc),
         ],
       ),
@@ -38,7 +38,7 @@ class LoginScreen extends StatelessWidget {
           decoration: InputDecoration(
             hintText: 'name@example.com',
             labelText: 'Email',
-            errorText: snapshot.error,
+            errorText: snapshot.error as String,
             border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
           ),
         );
@@ -59,7 +59,7 @@ class LoginScreen extends StatelessWidget {
               decoration: InputDecoration(
                 suffixIcon: IconButton(
                   icon: isObscure
-                      ? Icon(
+                      ? const Icon(
                           Icons.visibility_off,
                           color: Colors.grey,
                         )
@@ -73,7 +73,7 @@ class LoginScreen extends StatelessWidget {
                 ),
                 hintText: 'password',
                 labelText: 'Password',
-                errorText: snapshot.error,
+                errorText: snapshot.error as String,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
                 ),
@@ -94,18 +94,9 @@ class LoginScreen extends StatelessWidget {
           child: OutlineButton(
             padding: const EdgeInsets.all(0),
             disabledBorderColor: Colors.grey[300],
-            borderSide: BorderSide(
-              color: Colors.grey[600],
-            ),
+            borderSide: BorderSide(color: Colors.grey[600]),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(8),
-            ),
-            child: Text(
-              'Login',
-              style: TextStyle(
-                fontSize: 16,
-                color: Colors.grey[600],
-              ),
             ),
             onPressed: snapshot.data == false || snapshot.data == null
                 ? null
@@ -113,10 +104,14 @@ class LoginScreen extends StatelessWidget {
                     Navigator.push(
                       context,
                       CupertinoPageRoute(
-                        builder: (context) => HomeScreen(title: 'Home'),
+                        builder: (context) => const HomeScreen(title: 'Home'),
                       ),
                     );
                   },
+            child: Text(
+              'Login',
+              style: TextStyle(fontSize: 16, color: Colors.grey[600]),
+            ),
             // Navigator.pushNamedAndRemoveUntil(context,
             // HomeScreen.routeName, (Route<dynamic> route) => false),
           ),
