@@ -1,6 +1,6 @@
-# login_demo_with_bloc
+[![style: effective dart](https://img.shields.io/badge/style-effective_dart-40c4ff.svg)](https://pub.dev/packages/effective_dart)
 
-A new Flutter application.
+# Login Demo With Bloc (CombineLatest2)
 
 This Flutter example show how to handle CombineLatest with ReactiveX /
 rxdart.
