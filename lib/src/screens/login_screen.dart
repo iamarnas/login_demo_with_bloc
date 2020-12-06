@@ -98,7 +98,7 @@ class LoginScreen extends StatelessWidget {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(8),
             ),
-            onPressed: snapshot.data == false || snapshot.data == null
+            onPressed: !snapshot.hasData
                 ? null
                 : () {
                     Navigator.push(
