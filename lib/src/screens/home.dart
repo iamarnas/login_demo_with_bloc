@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = '/home';
-  const HomeScreen({Key key, @required this.title}) : super(key: key);
-
-  final String title;
+  const HomeScreen({Key key}) : super(key: key);
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -23,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: const Text('Counter'),
       ),
       body: Center(
         child: Column(

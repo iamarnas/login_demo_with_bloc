@@ -9,26 +9,32 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bloc = BlocProvider.of<LoginBloc>(context);
-    return body(bloc);
-  }
-
-  Widget body(LoginBloc bloc) {
     return Scaffold(
-      body: ListView(
-        padding: const EdgeInsets.fromLTRB(48, 140, 48, 16),
-        children: <Widget>[
-          buildEmailField(bloc),
-          const SizedBox(height: 12),
-          buildPasswordField(bloc),
-          const SizedBox(height: 12),
-          buildSubmitButton(bloc),
-        ],
+      body: Center(
+        child: SingleChildScrollView(
+          child: SizedBox(
+            width: 320,
+            child: Column(
+              children: [
+                EmailTextField(),
+                const SizedBox(height: 16),
+                PasswordTextField(),
+                const SizedBox(height: 16),
+                SubmitButton(),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }
+}
 
-  Widget buildEmailField(LoginBloc bloc) {
+class EmailTextField extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final bloc = BlocProvider.of<LoginBloc>(context);
+
     return StreamBuilder(
       stream: bloc.email,
       builder: (context, snapshot) {
@@ -45,9 +51,14 @@ class LoginScreen extends StatelessWidget {
       },
     );
   }
+}
 
-  Widget buildPasswordField(LoginBloc bloc) {
+class PasswordTextField extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final bloc = BlocProvider.of<LoginBloc>(context);
     bool isObscure = true;
+
     return StreamBuilder(
       stream: bloc.password,
       builder: (context, snapshot) {
@@ -59,10 +70,7 @@ class LoginScreen extends StatelessWidget {
               decoration: InputDecoration(
                 suffixIcon: IconButton(
                   icon: isObscure
-                      ? const Icon(
-                          Icons.visibility_off,
-                          color: Colors.grey,
-                        )
+                      ? const Icon(Icons.visibility_off, color: Colors.grey)
                       : Icon(
                           Icons.visibility,
                           color: Theme.of(context).primaryColor,
@@ -84,37 +92,36 @@ class LoginScreen extends StatelessWidget {
       },
     );
   }
+}
 
-  Widget buildSubmitButton(LoginBloc bloc) {
+class SubmitButton extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final bloc = BlocProvider.of<LoginBloc>(context);
+
+    const size = Size(double.infinity, kToolbarHeight);
+
     return StreamBuilder(
       stream: bloc.submitLogin,
       builder: (context, snapshot) {
-        return SizedBox(
-          width: double.infinity,
-          child: OutlineButton(
-            padding: const EdgeInsets.all(0),
-            disabledBorderColor: Colors.grey[300],
-            borderSide: BorderSide(color: Colors.grey[600]),
+        return ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            minimumSize: size,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(8),
             ),
-            onPressed: !snapshot.hasData
-                ? null
-                : () {
-                    Navigator.push(
-                      context,
-                      CupertinoPageRoute(
-                        builder: (context) => const HomeScreen(title: 'Home'),
-                      ),
-                    );
-                  },
-            child: Text(
-              'Login',
-              style: TextStyle(fontSize: 16, color: Colors.grey[600]),
-            ),
-            // Navigator.pushNamedAndRemoveUntil(context,
-            // HomeScreen.routeName, (Route<dynamic> route) => false),
           ),
+          onPressed: !snapshot.hasData
+              ? null
+              : () {
+                  Navigator.push(
+                    context,
+                    CupertinoPageRoute(
+                      builder: (context) => const HomeScreen(),
+                    ),
+                  );
+                },
+          child: const Text('Login', style: TextStyle(fontSize: 20)),
         );
       },
     );

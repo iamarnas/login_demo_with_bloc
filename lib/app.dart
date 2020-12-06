@@ -20,7 +20,7 @@ class App extends StatelessWidget {
         home: LoginScreen(), // becomes the route named '/'
         routes: <String, WidgetBuilder>{
           LoginScreen.routeName: (context) => LoginScreen(),
-          HomeScreen.routeName: (context) => const HomeScreen(title: 'Home'),
+          HomeScreen.routeName: (context) => const HomeScreen(),
         },
       ),
     );
