@@ -98,7 +98,6 @@ class SubmitButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bloc = BlocProvider.of<LoginBloc>(context);
-
     const size = Size(double.infinity, kToolbarHeight);
 
     return StreamBuilder(

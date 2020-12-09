@@ -1,6 +1,6 @@
 [![style: effective dart](https://img.shields.io/badge/style-effective_dart-40c4ff.svg)](https://pub.dev/packages/effective_dart) 
-[![Code size](https://img.shields.io/github/languages/code-size/iamarnas/login_demo_with_bloc?color=gree&logo=dart)](https://github.com/iamarnas/login_demo_with_bloc)
-[![Stars](https://img.shields.io/github/stars/iamarnas/login_demo_with_bloc?color=yellow&logo=github)](https://github.com/iamarnas/login_demo_with_bloc)
+![Code size](https://img.shields.io/github/languages/code-size/iamarnas/login_demo_with_bloc?color=gree&logo=dart)
+![Stars](https://img.shields.io/github/stars/iamarnas/login_demo_with_bloc?color=yellow&logo=github)
 
 # Login Demo With Bloc (CombineLatest2)
 
