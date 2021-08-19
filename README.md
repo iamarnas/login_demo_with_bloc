@@ -1,4 +1,5 @@
-[![style: effective dart](https://img.shields.io/badge/style-effective_dart-40c4ff.svg)](https://pub.dev/packages/effective_dart) 
+[![style: effective dart](https://img.shields.io/badge/style-effective_dart-40c4ff.svg)](https://pub.dev/packages/effective_dart)
+[![Sound null safety](https://img.shields.io/badge/dart-null_safety-blue?color=40c4ff&logo=dart)]()
 ![Code size](https://img.shields.io/github/languages/code-size/iamarnas/login_demo_with_bloc?color=gree&logo=dart)
 ![Stars](https://img.shields.io/github/stars/iamarnas/login_demo_with_bloc?color=yellow&logo=github)
 
