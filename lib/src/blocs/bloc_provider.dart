@@ -8,9 +8,9 @@ abstract class BlocBase {
 // Generic BLoC provider.
 class BlocProvider<T extends BlocBase> extends StatefulWidget {
   const BlocProvider({
-    Key key,
-    @required this.child,
-    @required this.bloc,
+    Key? key,
+    required this.child,
+    required this.bloc,
   }) : super(key: key);
 
   final T bloc;
@@ -20,7 +20,7 @@ class BlocProvider<T extends BlocBase> extends StatefulWidget {
   _BlocProviderState<T> createState() => _BlocProviderState<T>();
 
   static T of<T extends BlocBase>(BuildContext context) {
-    final BlocProvider<T> provider = context.findAncestorWidgetOfExactType();
+    final BlocProvider<T> provider = context.findAncestorWidgetOfExactType()!;
     return provider.bloc;
   }
 }

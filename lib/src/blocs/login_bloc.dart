@@ -13,7 +13,8 @@ class LoginBloc extends Object with BlocBase, Validators {
   Stream<String> get email => _email.stream.transform(validateEmail);
   Stream<String> get password => _password.stream.transform(validatePassword);
   // Merging email and password streams.
-  Stream<bool> get submitLogin => Rx.combineLatest2(email, password, _validate);
+  Stream<bool?> get submitLogin =>
+      Rx.combineLatest2(email, password, _validate);
 
   // Change data
   Function(String) get updateEmail => _email.sink.add;
@@ -26,15 +27,13 @@ class LoginBloc extends Object with BlocBase, Validators {
   }
 
   // Control if validation not have error.
-  bool _validate(String e, String p) {
+  bool? _validate(String e, String p) {
     // We only need to return the required value.
     // Return true if we have the required value otherwise null
     // to tell StreamBuilder that we have no data here.
     // If you return false, not null, StreamBuilder will thinks it has data.
     // This way snapshot.hasData will work properly.
-    return identical(e, _email.value) && identical(p, _password.value)
-        ? true
-        : null;
+    return e == _email.value && p == _password.value ? true : null;
   }
 
   void submit() {

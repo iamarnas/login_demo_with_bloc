@@ -35,7 +35,7 @@ class EmailTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     final bloc = BlocProvider.of<LoginBloc>(context);
 
-    return StreamBuilder(
+    return StreamBuilder<String>(
       stream: bloc.email,
       builder: (context, snapshot) {
         return TextField(
@@ -44,7 +44,7 @@ class EmailTextField extends StatelessWidget {
           decoration: InputDecoration(
             hintText: 'name@example.com',
             labelText: 'Email',
-            errorText: snapshot.error as String,
+            errorText: snapshot.hasError ? snapshot.error.toString() : null,
             border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
           ),
         );
@@ -59,7 +59,7 @@ class PasswordTextField extends StatelessWidget {
     final bloc = BlocProvider.of<LoginBloc>(context);
     bool isObscure = true;
 
-    return StreamBuilder(
+    return StreamBuilder<String>(
       stream: bloc.password,
       builder: (context, snapshot) {
         return StatefulBuilder(
@@ -81,7 +81,7 @@ class PasswordTextField extends StatelessWidget {
                 ),
                 hintText: 'password',
                 labelText: 'Password',
-                errorText: snapshot.error as String,
+                errorText: snapshot.hasError ? snapshot.error.toString() : null,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
                 ),
@@ -100,7 +100,7 @@ class SubmitButton extends StatelessWidget {
     final bloc = BlocProvider.of<LoginBloc>(context);
     const size = Size(double.infinity, kToolbarHeight);
 
-    return StreamBuilder(
+    return StreamBuilder<bool?>(
       stream: bloc.submitLogin,
       builder: (context, snapshot) {
         return ElevatedButton(
