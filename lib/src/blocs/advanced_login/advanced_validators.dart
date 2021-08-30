@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import '../../../extensions/validation_api.dart';
+import '../../extensions/validation_api.dart';
 
 abstract class StringValidator {
   bool isValid(String value);

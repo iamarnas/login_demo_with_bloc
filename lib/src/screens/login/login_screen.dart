@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../../blocs/blocs.dart' show BlocProvider, LoginBloc;
-import '../../home.dart';
+import '../../blocs/blocs.dart';
+import '../home.dart';
 
 import 'widgets/widgets.dart';
 

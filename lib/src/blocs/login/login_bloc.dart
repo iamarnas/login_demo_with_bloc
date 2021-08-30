@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:rxdart/rxdart.dart';
 
-import '../login.dart';
+import '../blocs.dart';
 
 class LoginBloc extends LoginBase with Validators {
   final _email = BehaviorSubject<String>();

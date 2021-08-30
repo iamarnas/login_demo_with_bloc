@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../blocs/blocs.dart';
+import '../../../blocs/blocs.dart';
 
 final confirmPasswordFocus = FocusNode();
 

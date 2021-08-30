@@ -1,4 +1,4 @@
-import '../bloc_provider.dart';
+import './bloc_provider.dart';
 
 abstract class LoginBase extends BlocBase {
   Stream<String> get email;

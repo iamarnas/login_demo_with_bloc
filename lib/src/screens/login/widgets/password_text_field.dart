@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../../../../blocs/blocs.dart';
-
-import 'widgets.dart';
-
-final passwordFocus = FocusNode();
+import '../../../blocs/blocs.dart';
 
 class PasswordTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final bloc = BlocProvider.of<AdvancedLoginBloc>(context);
+    final bloc = BlocProvider.of<LoginBloc>(context);
     bool isObscure = true;
 
     return StreamBuilder<String>(
@@ -19,13 +15,8 @@ class PasswordTextField extends StatelessWidget {
           builder: (BuildContext context, StateSetter setState) {
             return TextField(
               onChanged: bloc.updatePassword,
-              focusNode: passwordFocus,
-              onSubmitted: (_) {
-                if (snapshot.hasData) {
-                  FocusScope.of(context).requestFocus(confirmPasswordFocus);
-                }
-              },
               obscureText: isObscure,
+              textInputAction: TextInputAction.done,
               decoration: InputDecoration(
                 prefixIcon: StreamBuilder<bool?>(
                   stream: bloc.submitLogin,
