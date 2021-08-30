@@ -26,9 +26,6 @@ class AdvancedLoginBloc extends LoginBase with AdvancedValidators {
     return Rx.combineLatest2(password, confirm, _validate);
   }
 
-  /// `Tuple` is a useful tool to combine with `Rx.combineLatest` and `Rx.zip` to put multiple streams into one `StreamBuilder`.
-  ///
-  /// Returns `item1` as `submitLogin` and `item2` as `isPasswordsEquals` combined latest streams.
   Stream<ValidateModel> get validateModel => Rx.combineLatest2(
         submitLogin,
         isPasswordsEquals,
